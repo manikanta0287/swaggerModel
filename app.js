@@ -212,21 +212,18 @@ app.get('/getOrders/itemName/:itemName', function (req, res) {
 /**@swagger
  * /createorder:
  *  post:
- *      summary: To create orders by Name
- *      description: this api send data to mysql
- *      parameters:
- *           - in : path
- *             name: itemName
- *             required: true
- *             description: string required
+ *     summary : To create orders by Name
+ *     description: this api send data to mysql
+ *     requestedBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schemas:
+ *                      $ref: '#data/Orders' 
  *      responses:
  *          200:
- *              description: this api create data
- *              content:
- *                      application/json:
- *                          schemas:
- *                              type: array
- *                              items: 
+ *              description: Data added successfully
+ *              
  *               
  */
 app.post("/createorder", function (req, res) {
