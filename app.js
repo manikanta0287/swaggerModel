@@ -62,7 +62,7 @@ app.get('/', (req, res) => {
 /**
  * @swagger
  *  component:
- *          schema:
+ *          schemas:
  *                  Orders:
  *                          type: object
  *                          properties:
@@ -96,7 +96,7 @@ app.get('/', (req, res) => {
  *              description: this api fetch from Mysql
  *              content:
  *                      application/json:
- *                          schema:
+ *                          schemass:
  *                              type: array
  *                              items: 
  *                                  $ref: '#data/Orders'
@@ -147,7 +147,7 @@ app.get('/orders', function (req, res) {
  *              description: this api fetch from Mysql
  *              content:
  *                      application/json:
- *                          schema:
+ *                          schemas:
  *                              type: array
  *                              items: 
  *                                                             
@@ -183,7 +183,7 @@ app.get("/getOrders/id/:id", function (req, res) {
  *              description: this api fetch from Mysql
  *              content:
  *                      application/json:
- *                          schema:
+ *                          schemas:
  *                              type: array
  *                              items: 
  *                               
@@ -224,7 +224,7 @@ app.get('/getOrders/itemName/:itemName', function (req, res) {
  *              description: this api create data
  *              content:
  *                      application/json:
- *                          schema:
+ *                          schemas:
  *                              type: array
  *                              items: 
  *               
@@ -257,7 +257,8 @@ app.post("/createorder", function (req, res) {
 
 app.put('/update/:names', function (req, res) {
     var name = req.body.item_name;
-    con.query('update Orders set item_name = ? where id = ?', [name, req.params.names], function (err, r) {
+    console.log(name);
+    con.query('update Orders set item_name = ? , item_category = ? where id = ?', [name, req.params.names], function (err, r) {
         if (err) {
             console.log("error ocurred", err);
             res.send({
