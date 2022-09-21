@@ -213,17 +213,17 @@ app.get('/getOrders/itemName/:itemName', function (req, res) {
  * @swagger
  * /getOrders/itemName/{itemName}:
  *  post:
- *      summary: to get orders by Name
- *      description: this api fetch from mysql
- *      requestBody:
- *           required: true
- *          content:
- *              application/json:
- *                  schemas:
- *                      $ref: '#data/Orders'
-  *     responses:
- *          200:
- *              description: data added successfully
+ *      summary : to get orders by Name
+ *      description : this api fetch from mysql
+ *      requestBody :
+ *           required : true
+ *          content :
+ *              application/json :
+ *                  schemas :
+ *                      $ref : '#data/Orders'
+  *     responses :
+ *          200 :
+ *              description : data added successfully
  *                               
  * 
  */
@@ -252,7 +252,7 @@ app.post("/createorder", function (req, res) {
 
 
 
-//PUT Orders
+//PUT Orders--------------------OK--------------
 
 
 app.put('/update/:names', function (req, res) {
@@ -276,7 +276,7 @@ app.put('/update/:names', function (req, res) {
 })
 
 
-//------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------OK-----------------------------------------------------------------
 
 
 //  Update user with id
