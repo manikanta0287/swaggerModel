@@ -96,7 +96,7 @@ app.get('/', (req, res) => {
  *              description: this api fetch from Mysql
  *              content:
  *                      application/json:
- *                          schemass:
+ *                          schemas:
  *                              type: array
  *                              items: 
  *                                  $ref: '#data/Orders'
@@ -209,23 +209,26 @@ app.get('/getOrders/itemName/:itemName', function (req, res) {
 
 //POST api
 
-/**@swagger
- * /createorder:
+/**
+ * @swagger
+ * /getOrders/itemName/{itemName}:
  *  post:
- *     summary : To create orders by Name
- *     description: this api send data to mysql
- *     requestedBody:
- *          required: true
+ *      summary: to get orders by Name
+ *      description: this api fetch from mysql
+ *      requestBody:
+ *           required: true
  *          content:
  *              application/json:
  *                  schemas:
- *                      $ref: '#data/Orders' 
- *      responses:
+ *                      $ref: '#data/Orders'
+  *     responses:
  *          200:
- *              description: Data added successfully
- *              
- *               
+ *              description: data added successfully
+ *                               
+ * 
  */
+
+
 app.post("/createorder", function (req, res) {
 
     var Body = req.body;
@@ -277,15 +280,20 @@ app.put('/update/:names', function (req, res) {
 
 
 //  Update user with id
-app.put('/user', function (req, res) {
-    let id = req.body.item_number;
+app.put('/order/:id', function (req, res) {
+    
+    let id = req.params.id;
+    console.log(id);
+    
     let item = req.body.item_name;
-    if (!user_id || !user) {
+    console.log(item);
+
+    if (!id || !item) {
         return res.status(400).send({ err: item, message: 'Please provide item and item_number' });
     }
-    dbConn.query("UPDATE Orders SET item = ? WHERE item_number = ?", [item, id], function (err, results) {
+    con.query("UPDATE Orders SET item_name = ? WHERE id = ?", [item, id], function (err, results) {
         if (err) console.log(err);
-        return res.send({ err: false, data: results, message: 'item has been updated successfully.' });
+        return res.send({  data: results, message: 'item has been updated successfully.' });
     });
 });
 
