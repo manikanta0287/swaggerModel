@@ -211,7 +211,6 @@ app.get('/getOrders/itemName/:itemName', function (req, res) {
 
 /**
 * @swagger
-*     path:
 *       /books/:
      post:
        summary: Creates a new book
@@ -256,6 +255,29 @@ app.post("/createorder", function (req, res) {
 
 
 //PUT Orders--------------------OK--------------
+
+/**
+ * @swagger
+ * /getOrders/itemName/{itemName}:
+ *  get:
+ *      summary: To get orders by Name
+ *      description: this api fetch from mysql
+ *      parameters:
+ *           - in : path
+ *             name: itemName
+ *             required: true
+ *             description: string required
+ *      responses:
+ *          200:
+ *              description: this api fetch from Mysql
+ *              content:
+ *                      application/json:
+ *                          schemas:
+ *                              type: array
+ *                              items: 
+ *                               
+ * 
+ */
 
 
 app.put('/update/:names', function (req, res) {
