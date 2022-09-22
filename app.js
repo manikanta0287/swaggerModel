@@ -240,23 +240,22 @@ app.post("/createorder", function (req, res) {
  * @swagger
  * /update/{id}:
  *  put:
- *      summary: To get orders by Name
+ *      summary: To update orders by id
  *      description: this api fetch from mysql
  *      parameters:
  *           - in : path
- *             id: id
+ *             id : id
  *             required: true
- *             description: string required
+ *             description: ID required
  *      responses:
  *          200:
- *              description: this api fetch from Mysql
+ *              description: this api update in Orders
  *              content:
  *                      application/json:
  *                          schemas:
  *                              type: array
  *                              items: 
- *                               
- * 
+ *                                  $ref: '#data/Orders'
  */
 
 
