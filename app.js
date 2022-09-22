@@ -99,7 +99,7 @@ app.get('/', (req, res) => {
  *                          schemas:
  *                              type: array
  *                              items: 
- *                                  $ref: '#data/Orders'
+ *                                  $ref: '#component/schemas/Orders'
  * 
  */
 
@@ -148,8 +148,9 @@ app.get('/orders', function (req, res) {
  *              content:
  *                      application/json:
  *                          schemas:
+ *                              $ref: #component/schemas/Orders
  *                              type: array
- *                              items: 
+ *                              items:  
  *                                                             
  */
 
@@ -207,10 +208,24 @@ app.get('/getOrders/itemName/:itemName', function (req, res) {
 });
 
 
-//POST api
+//POST api-------------------------------------------------------------------------------------
 
-
-
+/**
+ * @swagger
+ * /createorder:
+ *  post:
+ *      summary: User to insert orders
+ *      description: this api fetch from mysql
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schemas:
+ *                      $ref: '#component/schemas/Orders'
+ *      responses:
+ *          200:
+ *              description: added successfully Mysql
+ */
 app.post("/createorder", function (req, res) {
 
     var Body = req.body;
@@ -235,27 +250,32 @@ app.post("/createorder", function (req, res) {
 
 
 //PUT Orders--------------------OK--------------
-
 /**
  * @swagger
  * /update/{id}:
  *  put:
- *      summary: To update orders by id
- *      description: this api fetch from mysql
+ *      summary: To get orders by id
+ *      description: this api updated in mysql
  *      parameters:
  *           - in : path
- *             id : id
+ *             name: id
  *             required: true
- *             description: ID required
+ *             description: Numeric id required
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schemas:
  *      responses:
  *          200:
- *              description: this api update in Orders
+ *              description: this api updated in Mysql
  *              content:
  *                      application/json:
  *                          schemas:
  *                              type: array
- *                              items: 
- *                                  $ref: '#data/Orders'
+ *                              items:
+ *                                
+ * 
  */
 
 
