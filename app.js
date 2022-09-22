@@ -210,22 +210,25 @@ app.get('/getOrders/itemName/:itemName', function (req, res) {
 //POST api
 
 /**
- * @swagger
- * /getOrders/itemName/{itemName}:
- *  post:
- *      summary : to get orders by Name
- *      description : this api fetch from mysql
- *      requestBody :
- *           required : true
- *          content :
- *              application/json :
- *                  schemas :
- *                      $ref : '#data/Orders'
-  *     responses :
- *          200 :
- *              description : data added successfully
- *                               
- * 
+* @swagger
+*     path:
+*       /books/:
+     post:
+       summary: Creates a new book
+       tags: [Books]
+       requestBody:
+         required: true
+         content:
+           application/json:
+             schema:
+               $ref: '#/components/schemas/Book'
+       responses:
+         "200":
+           description: The created book.
+           content:
+             application/json:
+               schema:
+                 $ref: '#/components/schemas/Book'
  */
 
 
@@ -276,7 +279,7 @@ app.put('/update/:names', function (req, res) {
 })
 
 
-//-------------------------------------------------OK-----------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------
 
 
 //  Update user with id
