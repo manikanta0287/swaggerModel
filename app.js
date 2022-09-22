@@ -196,7 +196,7 @@ app.get('/getOrders/itemName/:itemName', function (req, res) {
     console.log('<<<<>>>>>>>>', itemName);
 
     con.query("SELECT * FROM Orders WHERE item_name = ?", [itemName], function (err, iName) {
-        
+
         if (err) {
             console.log(err);
         } else {
@@ -209,26 +209,6 @@ app.get('/getOrders/itemName/:itemName', function (req, res) {
 
 //POST api
 
-/**
-* @swagger
-*       /books/:
-     post:
-       summary: Creates a new book
-       tags: [Books]
-       requestBody:
-         required: true
-         content:
-           application/json:
-             schema:
-               $ref: '#/components/schemas/Book'
-       responses:
-         "200":
-           description: The created book.
-           content:
-             application/json:
-               schema:
-                 $ref: '#/components/schemas/Book'
- */
 
 
 app.post("/createorder", function (req, res) {
@@ -258,13 +238,13 @@ app.post("/createorder", function (req, res) {
 
 /**
  * @swagger
- * /getOrders/itemName/{itemName}:
- *  get:
+ * /update/{id}:
+ *  put:
  *      summary: To get orders by Name
  *      description: this api fetch from mysql
  *      parameters:
  *           - in : path
- *             name: itemName
+ *             id: id
  *             required: true
  *             description: string required
  *      responses:
@@ -280,13 +260,13 @@ app.post("/createorder", function (req, res) {
  */
 
 
-app.put('/update/:names', function (req, res) {
+app.put('/update/:id', function (req, res) {
     var name = req.body.item_name;
     console.log(name);
-    con.query('update Orders set item_name = ? , item_category = ? where id = ?', [name, req.params.names], function (err, r) {
+    con.query('update Orders set item_name = ?  where id = ?', [name, req.params.id], function (err, r) {
         if (err) {
             console.log("error ocurred", err);
-            res.send({
+            res.send({ 
                 "code": 400,
                 "failed": "error in updating"
             })
@@ -306,10 +286,10 @@ app.put('/update/:names', function (req, res) {
 
 //  Update user with id
 app.put('/order/:id', function (req, res) {
-    
+
     let id = req.params.id;
     console.log(id);
-    
+
     let item = req.body.item_name;
     console.log(item);
 
@@ -318,7 +298,7 @@ app.put('/order/:id', function (req, res) {
     }
     con.query("UPDATE Orders SET item_name = ? WHERE id = ?", [item, id], function (err, results) {
         if (err) console.log(err);
-        return res.send({  data: results, message: 'item has been updated successfully.' });
+        return res.send({ data: results, message: 'item has been updated successfully.' });
     });
 });
 
